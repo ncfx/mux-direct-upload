@@ -27,13 +27,28 @@ const options = {
     Accept: 'application/json',
   },
   auth: {
-    username: process.env.API_USERNAME,
-    password: process.env.API_KEY,
+    username: process.env.API_TOKEN_ID,
+    password: process.env.API_SECRET,
   },
   mode: 'cors',
 }
 
-// 🤓 Add your endpoints below here
+app.post('/upload', async (req, res) => {
+  try {
+    const response = await axios.post(`${baseUrl}/video/v1/uploads`, { 
+      "cors_origin": "*",
+      "new_asset_settings": {
+      "playback_policy": [
+        "signed"
+      ],
+    } }, options)
+    return res.send(response.data && response.data.data);
+  } catch (errorRes) {
+    return Promise.reject(
+      (errorRes.response && errorRes.response.data.error) || errorRes
+    );
+  }
+})
 
 
 app.listen(port, () => {

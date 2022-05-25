@@ -13,9 +13,9 @@ A starter project to teach [Mux](https://mux.com/) users how to directly upload 
 Create a `.env` file at the root of the project, paste the below, and replace the square brackets with your Mux API credentials.
 
 ```
-PORT=[your preferred port other than 3000]
-API_USERNAME=[your mux video api username]
-API_KEY=[your mux video api key]
+PORT=[server port other than 3000]
+API_TOKEN_ID=[your mux video api token id]
+API_SECRET=[your mux video api secret]
 ```
 
 ## Setup
